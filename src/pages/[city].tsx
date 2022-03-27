@@ -6,6 +6,7 @@ import { Container } from '@styles/components/Box';
 import { Title } from '@styles/components/Title';
 import { Temp } from '@styles/components/Temp';
 import { CloudDrizzleFillICons, SunICons, TemperatureICons } from '@styles/components/Icons';
+import { useRouter } from 'next/router';
 
 const INITIAL_DATA_FETCH_URL = (city: string) => (`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=2e15b119b196985ebbc0e88160e56bee`);
 
@@ -14,10 +15,11 @@ interface props {
 }
 
 const City: React.FC<props> = ({ data }) => {
-  let icon: string;
-  let background: string;
-  let backgroundColor: string;
-  let Color: string;
+  const router = useRouter();
+  let icon = '';
+  let background = '';
+  let backgroundColor = '';
+  let Color = '';
   switch (data.weather[0].icon) {
     case '01d':
       icon = 'http://openweathermap.org/img/wn/01d@2x.png';
@@ -173,7 +175,7 @@ const City: React.FC<props> = ({ data }) => {
             <h3 style={{ color: Color }}>{`${temperatureMinCelsius.toFixed(0)}°c`}</h3>
           </div>
         </Temp>
-        <div className="buttonBack" aria-hidden onClick={() => history.back()}>
+        <div className="buttonBack" aria-hidden onClick={() => router.push('/')}>
           <h3 style={{ color: Color }}>Go Back</h3>
           <div className="linha" />
         </div>

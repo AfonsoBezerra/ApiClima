@@ -6,10 +6,11 @@ export const MainStyle = styled.main`
   display: flex;
   justify-content: center;
   background-image: url('/355538.jpg');
+  background-size: cover;
   align-items: center;
   flex-direction: column;
   form {
-  width: 450px;
+  width: 90%;
   height: 300px;
   border-radius: 10px;
   border: 1px solid black;
@@ -21,6 +22,9 @@ export const MainStyle = styled.main`
   flex-direction: column;
   position: relative;
   animation: fadein 1s ease-in-out;
+  @media (min-width: 1024px){
+    width: 450px;
+  }
   .icon{
     position: absolute;
     width: 10rem;
